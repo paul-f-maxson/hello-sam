@@ -1,5 +1,6 @@
-const axios = require('axios')
-const url = `http://checkip.amazonaws.com/`;
+// const axios = require('axios')
+// const url = 'http://checkip.amazonaws.com/';
+let response;
 
 /**
  *
@@ -15,15 +16,18 @@ const url = `http://checkip.amazonaws.com/`;
  */
 exports.lambdaHandler = async (event, context) => {
     try {
-        return {
+        // const ret = await axios(url);
+        response = {
             'statusCode': 200,
             'body': JSON.stringify({
                 message: 'hello world',
-                location: (await axios(url)).data.trim()
+                // location: ret.data.trim()
             })
         }
     } catch (err) {
         console.log(err);
         return err;
     }
+
+    return response
 };
